@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <string.h>
+#include <math.h>
+/* Head ends here */
+void nextMove(int n, int c, int r, char grid[101][101]){
+  int i, j, up, left;
+  short princess[2];
+
+  /* find the princess */
+  for (i = 0; i < n; ++i) {
+    for (j = 0; j < n; ++j) {
+      if (grid[i][j] == 'p') {
+        princess[0] = i;
+        princess[1] = j;
+      }
+    }
+  }
+
+  if ((up = princess[0] - r) < 0) {
+    printf("UP\n");
+    return;
+  } else if (up > 0) {
+    printf("DOWN\n");
+    return;
+  }
+
+
+  if ((left = princess[1] - c) < 0) {
+    printf("LEFT\n");
+    return;
+  } else if (left > 0) {
+    printf("RIGHT\n");
+    return;
+  }
+}
+/* Tail starts here */
+int main(void) {
+
+  int n, x, y;
+
+  scanf("%d", &n);
+  scanf("%d", &x);
+  scanf("%d", &y);
+
+  char grid[101][101];
+
+  for(int i=0; i<n; i++) {
+    scanf("%s[^\n]%*c", grid[i]);
+  }
+
+  nextMove(n, x, y, grid);
+  return 0;
+}
